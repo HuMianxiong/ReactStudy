@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+     <!-- react的核心库 -->
+    <!-- 相当于vue.js 提供的是react对象 -->
+    <script src="../base/react.min.js"></script>
+    <!-- 提供操作DOM的react扩展库 -->
+    <!-- 提供了ReactDOM对象
+    rn react-native 
+    网页 b(browser)/s(server) webapp dom bom
+    react基本语法 + react-dom 可以写网页
+    app c(client)/s(server) 手机硬件以及ui
+    react 基本语法 + react-native 可以写app--> 
+    <script src="../base/react-dom.min.js"></script>
+    <!-- 使浏览器支持babel -->
+    <script src="../base/browser.min.js"></script>
+    <!-- 帮助浏览器解析jsx语法糖 -->
+</head>
+<body>
+    <div id="app">
+
+    </div>
+    <script type="text/babel">
+        /*
+            vue中一个组件的数据分两种 一种 组件内部的data 一种是来自组件外部的props
+            state 类似于vue中的data 组件自己的数据 可以随便的修改
+        */
+        let Hehe = React.createClass({
+            //return后放在当前对象的state里面
+            getInitialState(){
+                console.log('初始state的生命周期')
+                return {
+                    name:'呵呵1'
+                }
+            },
+            render(h){
+                console.log(this)//this指向的是组件对象
+                return (
+                    <div>呵呵{this.state.name}</div>//此处state等同于vue中的data
+                )
+            }
+        })
+        ReactDOM.render(<Hehe/>,document.getElementById('app'))
+    </script>
+</body>
+</html>

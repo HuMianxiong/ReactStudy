@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <!-- react的核心库 -->
+    <!-- 相当于vue.js 提供的是react对象 -->
+    <script src="../base/react.min.js"></script>
+    <!-- 提供操作DOM的react扩展库 -->
+    <!-- 提供了ReactDOM对象
+    rn react-native 
+    网页 b(browser)/s(server) webapp dom bom
+    react基本语法 + react-dom 可以写网页
+    app c(client)/s(server) 手机硬件以及ui
+    react 基本语法 + react-native 可以写app-->
+    <script src="../base/react-dom.min.js"></script>
+    <!-- 使浏览器支持babel -->
+    <script src="../base/browser.min.js"></script>
+    <!-- 帮助浏览器解析jsx语法糖 -->
+
+</head>
+
+<body>
+    <div id="app">
+
+    </div>
+    <script type="text/babel">
+        //react中 jsx的注释方式
+        {/*注释内容*/}
+        let Component = React.createClass({
+            //配置项
+           
+            render(){//固定
+                // console.log(11)
+              return (
+                  <div>
+                    {/*<h1>过去的就过去了</h1>*/}
+                    <p>不能空着</p>
+                </div>
+              )
+            }
+        })
+        //将组件的虚拟dom挂载到真实dom上
+        ReactDOM.render(<Component/>,document.getElementById('app'))
+    </script>
+</body>
+
+</html>

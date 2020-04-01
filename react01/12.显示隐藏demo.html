@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="../base/react.min.js"></script>
+    <script src="../base/react-dom.min.js"></script>
+    <script src="../base/browser.min.js"></script>
+    <style>
+        .red {
+            width: 100px;
+            height: 100px;
+            background: red;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="app">
+
+    </div>
+
+    <script type="text/babel">
+        let Component = React.createClass({
+            getInitialState(){
+                return{
+                    show:true
+                }
+            },
+            change(){
+                this.setState({show:!this.state.show},()=>{
+                    console.log("显示/隐藏",this.state.show)
+                })
+            },
+            render(){
+                return (
+                    <div>
+                        <div className={this.state.show?'red':''}></div>
+                        <button onClick={this.change}>点我</button>
+                    </div>
+                    
+                )
+            }
+        })
+        ReactDOM.render(<Component/>,document.getElementById('app'))
+        /*一个按钮控制div的显示隐藏
+        1.div显示隐藏
+        2.按钮控制
+        */
+    </script>
+</body>
+
+</html>

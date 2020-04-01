@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <!-- react的核心库 -->
+    <!-- 相当于vue.js 提供的是react对象 -->
+    <script src="../base/react.min.js"></script>
+    <!-- 提供操作DOM的react扩展库 -->
+    <!-- 提供了ReactDOM对象
+    rn react-native 
+    网页 b(browser)/s(server) webapp dom bom
+    react基本语法 + react-dom 可以写网页
+    app c(client)/s(server) 手机硬件以及ui
+    react 基本语法 + react-native 可以写app--> 
+    <script src="../base/react-dom.min.js"></script>
+    <!-- 使浏览器支持babel -->
+    <script src="../base/browser.min.js"></script>
+    <!-- 帮助浏览器解析jsx语法糖 -->
+</head>
+<body>
+    <div id="app"></div>
+    <!-- 在javascript中不能直接写标签 -->
+    <!-- 该标签内部需要做jsx的语法解析 -->
+    <script type="text/babel">
+        let Component = React.createClass({
+            render(){
+               
+                return(
+                    <div>数学老师曰：过程错了，结果就错了</div>
+                )
+            },
+        })
+        ReactDOM.render(<Component/>,document.getElementById('app'))
+    </script>
+</body>
+</html>

@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="../base/react.min.js"></script>
+    <script src="../base/react-dom.min.js"></script>
+    <script src="../base/browser.min.js"></script>
+   <style>
+       #test{
+           width: 100px;
+           height: 100px;
+           background: red;
+       }
+       .red{
+           height: 100px;
+           width: 100px;
+           background: red;
+       }
+       .blue{
+           height: 100px;
+           width: 100px;
+           background: blue;
+       }
+   </style>
+</head>
+<body>
+    <div id="app">
+
+    </div>
+    
+    <script type="text/babel">
+    /*
+        条件渲染 v-if 控制元素或者组件的渲染或不渲染
+        1.通过三元表达式控制渲染不渲染
+        2.表达式1||表达式2 运算符
+        3.函数实现
+    */
+        let Component = React.createClass({
+            getInitialState(){
+                return{
+                   
+                }
+            },
+            test1(num1,num2,e){
+                console.log('这里是test1',num1,num2,e);
+            },
+            render(){
+            //    return (
+            //     <button onClick={(e)=>{
+            //         console.log('呵呵哒',e)
+            //     }}>点击</button>
+            //    )
+            return(
+                // <button onClick={this.test1}>点我</button>
+                //不加括号怎么传参
+                //事件对象this
+                //react中的事件传递方式
+                <button onClick={this.test1.bind(null,6,4)}>点击</button>
+                //使用bind之后默认参数会放到参数队列的最后方
+                // <button onClick={this.test1.bind(this,6,4)}></button>
+                //bind改变this指向
+            )
+            }
+        })
+        ReactDOM.render(<Component/>,document.getElementById('app'))
+    </script>
+</body>
+</html>

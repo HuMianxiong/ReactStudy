@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+     <!-- react的核心库 -->
+    <!-- 相当于vue.js 提供的是react对象 -->
+    <script src="../base/react.min.js"></script>
+    <!-- 提供操作DOM的react扩展库 -->
+    <!-- 提供了ReactDOM对象
+    rn react-native 
+    网页 b(browser)/s(server) webapp dom bom
+    react基本语法 + react-dom 可以写网页
+    app c(client)/s(server) 手机硬件以及ui
+    react 基本语法 + react-native 可以写app--> 
+    <script src="../base/react-dom.min.js"></script>
+    <!-- 使浏览器支持babel -->
+    <script src="../base/browser.min.js"></script>
+    <!-- 帮助浏览器解析jsx语法糖 -->
+</head>
+<body>
+    <div id="app">
+
+    </div>
+    <script type="text/babel">
+        /*
+            vue中一个组件的数据分两种 一种 组件内部的data 一种是来自组件外部的props
+            state 类似于vue中的data 组件自己的数据 可以随便的修改
+            props 相当于自定义属性 来自于组件的外部 
+            1.组件的内部通过getDefaultProps生命周期进行初始化
+            2.在组件标签上通过自定义属性传递
+            3.初始化和传递的冲突以传递的优先级高
+            4.props传递的数据在组件内部只能使用不能修改
+        */
+        let Hehe = React.createClass({
+            getDefaultProps(){
+                //
+                console.log('初始化props的生命周期')
+                return{
+                    age:16
+                }
+            },
+            render(h){
+                console.log(this)//this指向的是组件对象
+                return (
+                    <div>{this.props.age}</div>
+                )
+            }
+        })
+        //假如有一个数据，
+        ReactDOM.render(<Hehe age='韩梅梅'/>,document.getElementById('app'))
+    </script>
+</body>
+</html>
