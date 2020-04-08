@@ -1,68 +1,69 @@
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+## 路由
+控制地址栏改变 <router-link> vue
+控制地址栏改变 <Link to='/singer'>歌手</Link> react
+根据改变渲染不同的组件<router-view> vue
+根据改变渲染不同的组件<Route path='/singer' component={要渲染的组件}></Route> react
 
-## Available Scripts
 
-In the project directory, you can run:
+## 路由插件 react-router
+1 - 3 :react-router
+4 - 5 :react-router-dom react-router-native
+[react-router] 
+```
+下载安装
+npm install react-router-dom 
+```
 
-### `npm start`
+### 路由的基本使用
+HashRouter BrowserRouter 哈希路由 历史路由 作为组件的父容器
+控制地址栏的改变 to
+Link to exact
+NavLink to exact activeClassName
 
-Runs the app in the development mode.<br />
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+Route 控制组件的渲染 path exact component render children
+Switch 百里挑一 只返回第一个匹配到的组件 
+Redirect 重定向
+```
+<HashRouter>
+    <Link exact to='/singer>歌手</Link>
+    <NavLink exact to='/recommend' activeClassName='hehe'>推荐</NavLink>
+    <Switch>
+    <Redirect from='/' to='/singer'></Redirect>
+    <Route path='/singer' component={组件}></Route>
+    <Route path='/recommend' render={组件}></Route>
+    <Route path='/singer' children={组件}></Route>
 
-The page will reload if you make edits.<br />
-You will also see any lint errors in the console.
+    <Route component={404}>
+    </Switch>
+<HashRouter>
+```
+ 
+###  编程式导航 和 声明式导航（寻找路由对象）
+<Link><NavLink>实现路由的跳转 声明式导航
+通过js路由对象的方式叫做编程式导航  push replace go goBack goForward
+注意：正常创建的组件是没有路由对象的
+1.通过Route 处理过的组件在props里有路由对象
+2.通过withRouter 处理过的组件也有路由对象
 
-### `npm test`
+### 路由传参
+动态导航 /hehe/:id
+query /hehe?us=123&ps=123
+state 
+this.props.history.push(`/singer/${us}/${ps}`)
+在路由对象的match 里获取传递的参数
 
-Launches the test runner in the interactive watch mode.<br />
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+query /hehe?us=123&ps=123
+相当于get方法 接收数据在路由对象的location里 需要自己做字符解析
+this.props.history.push('/singer?us=123&ps=456')
 
-### `npm run build`
+state
+在路由对象的location里接收
+this.props.history.push({pathname:'/recommend',state:{要传递的数据}})
+### 嵌套路由
 
-Builds the app for production to the `build` folder.<br />
-It correctly bundles React in production mode and optimizes the build for the best performance.
 
-The build is minified and the filenames include the hashes.<br />
-Your app is ready to be deployed!
+### 命名路由 命名视图 路由守卫
+## 高阶组件
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
 
-### `npm run eject`
 
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
-
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
-
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/code-splitting
-
-### Analyzing the Bundle Size
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size
-
-### Making a Progressive Web App
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app
-
-### Advanced Configuration
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/advanced-configuration
-
-### Deployment
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/deployment
-
-### `npm run build` fails to minify
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify
