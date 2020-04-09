@@ -60,10 +60,20 @@ state
 在路由对象的location里接收
 this.props.history.push({pathname:'/recommend',state:{要传递的数据}})
 ### 嵌套路由
+在路由里套路由 所有的组件都可以使用 Link Switch ..
+嵌套路由的上一级 千万不能加精准匹配
 
+<Route path='/singer' render={()=>{
+    <Route></Router>
+}}></Route>
 
-### 命名路由 命名视图 路由守卫
+### 命名路由 命名视图 路由守卫 xxx
+
 ## 高阶组件
+hoc 本质是一个函数 接收一个组件作为参数 返回一个新的组件
+功能性的封装 减少重复代码
+一般被高阶组件处理过的组件获取数据 都从props获取
 
+music首页用react写一遍
 
 

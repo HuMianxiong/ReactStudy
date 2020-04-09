@@ -7,8 +7,8 @@ class CustomNav extends Component{
         let us = '王一'
         let ps = '123'
         // console.log(this)
-        // this.props.history.push(`/singer/${us}/${ps}`)
-        this.props.history.push({pathname:'/singer',params:{us,ps}})
+        this.props.history.push(`/singer/${us}/${ps}`)
+        
 
         //query传参
         // this.props.history.push(`/recommend?us=${us}&ps={ps}`)
